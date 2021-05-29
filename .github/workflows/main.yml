@@ -1,0 +1,20 @@
+on:
+  push:
+    branches: 
+    - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Angular Deploy gh-pages Actions
+        uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.1
+        with:
+          github_access_token: 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
+          build_configuration: production 
+          base_href: /demo/  
+          deploy_branch: gh-pages 
+          angular_dist_build_folder: dist/demo
