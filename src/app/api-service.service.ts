@@ -7,13 +7,14 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map as __map, filter as __filter } from 'rxjs/operators';
-import { Shows } from './shows/shows';
+import { Show } from './shows/shows';
 
 @Injectable()
 export class ApiService {
   public static readonly BoredApiAsyncPath =
     'https://www.boredapi.com/api/activity/';
-  public static readonly ShowApi = 'https://api.tvmaze.com/search/shows?q=';
+  public static readonly ShowApi =
+    'https://api.tvmaze.com/singlesearch/shows?q=';
   public http: HttpClient;
   constructor(http: HttpClient) {
     this.http = http;
@@ -42,7 +43,7 @@ export class ApiService {
     return this.GetBoredAPIAsyncResponse().pipe(__map((_r) => _r.body));
   }
 
-  GetShowsAPIAsyncResponse(text: string): Observable<HttpResponse<Shows[]>> {
+  GetShowsAPIAsyncResponse(text: string): Observable<HttpResponse<Show>> {
     let __headers = new HttpHeaders();
     let req = new HttpRequest<any>('GET', `${ApiService.ShowApi}${text}`, {
       headers: __headers,
@@ -52,12 +53,12 @@ export class ApiService {
     return this.http.request<any>(req).pipe(
       __filter((_r) => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as HttpResponse<Shows[]>;
+        return _r as HttpResponse<Show>;
       })
     );
   }
 
-  GetShowsAPIAsync(text: string): Observable<Shows[]> {
+  GetShowsAPIAsync(text: string): Observable<Show> {
     return this.GetShowsAPIAsyncResponse(text).pipe(__map((_r) => _r.body));
   }
 }

@@ -8,10 +8,18 @@ nz-card {
   margin: 50px;
 }
 
-.ant-card-head-title {
-  font-weight: 600;
+.search-card {
+  height: 220px;
 }
 
 img {
-  max-height: 250px;
+  max-height: 228px;
+}
+
+h2 {
+  margin-bottom: -5px;
+}
+
+.summary {
+  margin-bottom: 2px;
 }

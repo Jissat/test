@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { interval } from 'rxjs';
 import { ApiService } from '../api-service.service';
-import { Shows } from './shows';
+import { Show } from './shows';
 
 @Component({
   selector: 'app-shows',
@@ -10,17 +10,24 @@ import { Shows } from './shows';
 })
 export class ShowsComponent implements OnInit {
   public text = '';
-  public show: Shows;
+  public show: Show;
   public loading = false;
+  public rows = 5;
   constructor(private readonly externalApi: ApiService) {}
 
   ngOnInit() {}
 
   public loadShows() {
-    this.externalApi.GetShowsAPIAsync(this.text).subscribe((x) => {
-      this.show = x[0];
-      this.loading = false;
-    });
+    this.externalApi.GetShowsAPIAsync(this.text).subscribe(
+      (x) => {
+        this.show = x;
+        this.loading = false;
+      },
+      () => {
+        this.show = null;
+        this.loading = false;
+      }
+    );
   }
 
   searchShow() {

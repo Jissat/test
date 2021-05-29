@@ -1,4 +1,8 @@
-<nz-card style="width: 500px" nzTitle="Get Info on your Favourite Show 🤩">
+<nz-card
+  style="width: 500px"
+  nzTitle="Get Info on your Favourite Show 🤩"
+  class="search-card"
+>
   <p>Search the name of the Show</p>
   <nz-input-group
     nzSearch
@@ -31,8 +35,8 @@
 </nz-card>
 <nz-card
   *ngIf="show"
-  style="width: 600px; margin-top: 16px"
-  [nzActions]="[actionSetting, actionEdit, actionEllipsis]"
+  style="width: 600px; height: 330px; margin-top: 16px"
+  [nzActions]="[actionSetting]"
 >
   <nz-skeleton
     [nzActive]="true"
@@ -41,23 +45,27 @@
   >
     <nz-card-meta
       [nzAvatar]="avatarTemplate"
-      [nzTitle]="show?.show?.name"
+      [nzTitle]="title"
       [nzDescription]="summary"
     ></nz-card-meta>
+    <ng-template #title
+      ><h2>{{ show?.name }} ({{ show?.premiered | date: "yyyy" }})</h2>
+    </ng-template>
     <ng-template #summary
-      ><div innerHtml="{{ show?.show?.summary }}"></div
-    ></ng-template>
+      ><h3>Genres: {{ show?.genres?.join(", ") }}</h3>
+      <div class="summary" nz-typography nzEllipsis [nzEllipsisRows]="rows">
+        <span innerHtml="{{ show?.summary }}"></span>
+      </div>
+      <h4>Rating: {{ show?.rating?.average }}</h4>
+      <h4>Language: {{ show?.language }}</h4>
+    </ng-template>
   </nz-skeleton>
 </nz-card>
 <ng-template #avatarTemplate>
-  <img nz-image [nzSrc]="show?.show?.image?.medium" />
+  <img nz-image [nzSrc]="show?.image?.medium" />
 </ng-template>
 <ng-template #actionSetting>
-  <i nz-icon nzType="setting"></i>
-</ng-template>
-<ng-template #actionEdit>
-  <i nz-icon nzType="edit"></i>
-</ng-template>
-<ng-template #actionEllipsis>
-  <i nz-icon nzType="ellipsis"></i>
+  <a [href]="show?.officialSite" target="_blank" title="Official Link"
+    ><i nz-icon nzType="link" nzTheme="outline"></i
+  ></a>
 </ng-template>

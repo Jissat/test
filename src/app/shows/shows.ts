@@ -1,9 +1,4 @@
-export class Shows {
-  score: number;
-  show: Show;
-}
-
-export interface Show {
+export class Show {
   id: number;
   url: string;
   name: string;
