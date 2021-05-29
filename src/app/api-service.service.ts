@@ -12,8 +12,8 @@ import { Shows } from './shows/shows';
 @Injectable()
 export class ApiService {
   public static readonly BoredApiAsyncPath =
-    'http://www.boredapi.com/api/activity/';
-  public static readonly ShowApi = 'http://api.tvmaze.com/search/shows?q=';
+    'https://www.boredapi.com/api/activity/';
+  public static readonly ShowApi = 'https://api.tvmaze.com/search/shows?q=';
   public http: HttpClient;
   constructor(http: HttpClient) {
     this.http = http;
