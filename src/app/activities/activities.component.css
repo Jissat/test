@@ -1,0 +1,29 @@
+:host {
+  height: 90%;
+  display: contents;
+}
+
+[nz-carousel-content] {
+  text-align: center;
+  height: 130px;
+  line-height: 130px;
+  color: #fff;
+  overflow: hidden;
+}
+
+.heading {
+  margin: 15px -5px;
+  background-color: cadetblue;
+  padding: 5px 15px;
+  color: #004e4e;
+  border-radius: 10px;
+  font-size: 30px;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.message {
+  color: #fff;
+  margin-bottom: 0;
+  font-size: 60px;
+}

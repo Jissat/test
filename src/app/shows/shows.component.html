@@ -1,0 +1,63 @@
+<nz-card style="width: 500px" nzTitle="Get Info on your Favourite Show 🤩">
+  <p>Search the name of the Show</p>
+  <nz-input-group
+    nzSearch
+    nzSize="large"
+    [nzAddOnAfter]="suffixButton"
+    [nzPrefix]="prefixTemplateVideo"
+  >
+    <input
+      type="text"
+      nz-input
+      [(ngModel)]="text"
+      placeholder="Input search text"
+    />
+  </nz-input-group>
+  <ng-template #suffixButton>
+    <button
+      nz-button
+      nzType="primary"
+      nzSize="large"
+      (click)="searchShow()"
+      type="submit"
+      nzSearch
+    >
+      Search
+    </button>
+  </ng-template>
+  <ng-template #prefixTemplateVideo
+    ><i nz-icon nzType="video-camera" nzTheme="outline"></i
+  ></ng-template>
+</nz-card>
+<nz-card
+  *ngIf="show"
+  style="width: 600px; margin-top: 16px"
+  [nzActions]="[actionSetting, actionEdit, actionEllipsis]"
+>
+  <nz-skeleton
+    [nzActive]="true"
+    [nzLoading]="loading"
+    [nzAvatar]="{ size: 'large' }"
+  >
+    <nz-card-meta
+      [nzAvatar]="avatarTemplate"
+      [nzTitle]="show?.show?.name"
+      [nzDescription]="summary"
+    ></nz-card-meta>
+    <ng-template #summary
+      ><div innerHtml="{{ show?.show?.summary }}"></div
+    ></ng-template>
+  </nz-skeleton>
+</nz-card>
+<ng-template #avatarTemplate>
+  <img nz-image [nzSrc]="show?.show?.image?.medium" />
+</ng-template>
+<ng-template #actionSetting>
+  <i nz-icon nzType="setting"></i>
+</ng-template>
+<ng-template #actionEdit>
+  <i nz-icon nzType="edit"></i>
+</ng-template>
+<ng-template #actionEllipsis>
+  <i nz-icon nzType="ellipsis"></i>
+</ng-template>

@@ -1,0 +1,17 @@
+:host {
+  height: 90%;
+  background-color: firebrick;
+  display: flex;
+}
+
+nz-card {
+  margin: 50px;
+}
+
+.ant-card-head-title {
+  font-weight: 600;
+}
+
+img {
+  max-height: 250px;
+}
