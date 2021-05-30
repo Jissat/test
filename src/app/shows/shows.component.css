@@ -12,8 +12,8 @@ nz-card {
   height: 220px;
 }
 
-img {
-  max-height: 228px;
+.show-image {
+  max-height: 200px;
 }
 
 h2 {
@@ -22,4 +22,38 @@ h2 {
 
 .summary {
   margin-bottom: 2px;
+}
+
+.video-icon {
+  padding-right: 15px;
+}
+
+h4 {
+  margin: 0;
+}
+
+.link {
+  float: right;
+  margin-top: -21px;
+}
+
+.image {
+  padding-top: 28px;
+  padding-left: 50px;
+  filter: blur(2px) brightness(0.5);
+}
+
+.img-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 10vh;
+  font-family: fantasy;
+  transform: translate(-50%, -50%);
 }

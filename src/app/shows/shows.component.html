@@ -12,6 +12,7 @@
   >
     <input
       type="text"
+      (keydown.enter)="searchShow()"
       nz-input
       [(ngModel)]="text"
       placeholder="Input search text"
@@ -30,14 +31,21 @@
     </button>
   </ng-template>
   <ng-template #prefixTemplateVideo
-    ><i nz-icon nzType="video-camera" nzTheme="outline"></i
+    ><i class="video-icon" nz-icon nzType="video-camera" nzTheme="outline"></i
   ></ng-template>
 </nz-card>
-<nz-card
-  *ngIf="show"
-  style="width: 600px; height: 330px; margin-top: 16px"
-  [nzActions]="[actionSetting]"
->
+<div class="img-container" [hidden]="show">
+  <img
+    nz-image
+    class="image"
+    width="680px"
+    height="280px"
+    nzSrc="https://www.bolsamania.com/cine/wp-content/uploads/2017/02/64-2.jpg"
+    alt=""
+  />
+  <div class="centered">Find Your Show</div>
+</div>
+<nz-card *ngIf="show" style="width: 680px; height: 250px; margin-top: 16px">
   <nz-skeleton
     [nzActive]="true"
     [nzLoading]="loading"
@@ -58,14 +66,14 @@
       </div>
       <h4>Rating: {{ show?.rating?.average }}</h4>
       <h4>Language: {{ show?.language }}</h4>
+      <h4 class="link">
+        <a [href]="show?.officialSite" target="_blank" title="Official Link"
+          >Official Link</a
+        >
+      </h4>
     </ng-template>
   </nz-skeleton>
 </nz-card>
 <ng-template #avatarTemplate>
-  <img nz-image [nzSrc]="show?.image?.medium" />
-</ng-template>
-<ng-template #actionSetting>
-  <a [href]="show?.officialSite" target="_blank" title="Official Link"
-    ><i nz-icon nzType="link" nzTheme="outline"></i
-  ></a>
+  <img nz-image class="show-image" [nzSrc]="show?.image?.medium" />
 </ng-template>

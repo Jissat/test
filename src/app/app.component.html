@@ -1,12 +1,47 @@
 <nz-layout class="layout">
   <nz-header>
     <ul nz-menu nzTheme="dark" nzMode="horizontal">
-      <img nz-image width="40px" height="40px" nzSrc="favicon.ico" alt="" />
-      <li nz-menu-item>Last</li>
-      <li nz-menu-item>Second One</li>
-      <li nz-menu-item>About Me</li>
+      <img
+        nz-image
+        [nzDisablePreview]="true"
+        width="40px"
+        height="40px"
+        nzSrc="favicon.ico"
+        alt=""
+      />
+      <li nz-menu-item (click)="aboutMe()">About Me</li>
     </ul>
   </nz-header>
   <app-shows></app-shows>
   <app-activities></app-activities>
 </nz-layout>
+<nz-drawer
+  [nzVisible]="visibility"
+  [nzWidth]="640"
+  [nzClosable]="false"
+  nzPlacement="top"
+  (nzOnClose)="close()"
+  [nzContent]="drawer"
+>
+  <ng-template #drawer>
+    <div class="about-me">
+      <img
+        nz-image
+        class="me-image img"
+        width="180px"
+        height="180px"
+        nzSrc="https://media-exp1.licdn.com/dms/image/C5603AQGfDFhp2dlarA/profile-displayphoto-shrink_400_400/0/1597141416760?e=1628121600&v=beta&t=F-ilj3qE_D8tk9OS-VBAuOmQwlb4Dztj0uCX7xaOjuw"
+        alt=""
+      />
+      <span class="me">
+        <h1>Jishnu S</h1>
+        <h2>There is not much to know about me, just a plain simple person.</h2>
+        <h2>
+          As experimenting with websites is a hobby, things like this is a
+          starter.
+        </h2>
+        <h2>You could send your views at <a>me@jishnu.ml</a></h2>
+      </span>
+    </div>
+  </ng-template>
+</nz-drawer>

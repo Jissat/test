@@ -12,7 +12,7 @@ export class ShowsComponent implements OnInit {
   public text = '';
   public show: Show;
   public loading = false;
-  public rows = 5;
+  public rows = 4;
   constructor(private readonly externalApi: ApiService) {}
 
   ngOnInit() {}
@@ -31,6 +31,7 @@ export class ShowsComponent implements OnInit {
   }
 
   searchShow() {
+    this.show = null;
     if (this.text.length > 0) {
       this.loading = true;
       this.loadShows();

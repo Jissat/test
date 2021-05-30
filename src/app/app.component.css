@@ -6,3 +6,38 @@ li {
   background-color: #364d79 !important;
   height: 100vh;
 }
+
+.about-me {
+  padding: 24px;
+  height: 123%;
+  margin: -24px;
+  display: flex;
+  background-image: linear-gradient(#094842, black);
+}
+
+.me {
+  padding: 0 36px;
+  display: block;
+}
+
+h1,
+h2 {
+  color: burlywood;
+}
+
+img {
+  border-radius: 10px;
+}
+
+.me-image {
+  filter: brightness(0.8) grayscale(100%);
+  transform: rotate(351deg);
+  margin-left: 20vw;
+  transition: filter 0.5s ease-in-out;
+}
+
+.me-image:hover {
+  filter: brightness(0.8) !important;
+  transition-delay: 1s ease-in-out;
+  transition: filter 0.5s ease-in-out;
+}
