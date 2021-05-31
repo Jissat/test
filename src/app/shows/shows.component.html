@@ -34,7 +34,7 @@
     ><i class="video-icon" nz-icon nzType="video-camera" nzTheme="outline"></i
   ></ng-template>
 </nz-card>
-<div class="img-container" [hidden]="show">
+<div class="img-container" [hidden]="show || loading">
   <img
     nz-image
     class="image"
@@ -45,7 +45,7 @@
   />
   <div class="centered">Find Your Show</div>
 </div>
-<nz-card *ngIf="show" style="width: 680px; height: 250px; margin-top: 16px">
+<nz-card *ngIf="show || loading" style="width: 680px; height: 250px; margin-top: 16px">
   <nz-skeleton
     [nzActive]="true"
     [nzLoading]="loading"
